@@ -4,14 +4,15 @@ import {
   Text,
   TouchableOpacity,
   StyleSheet,
-  SafeAreaView,
   Animated,
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { useApp } from '../context/AppContext';
 import { useTranslation } from '../i18n/useTranslation';
+import { speakCard } from '../utils/speech';
 import { RootStackParamList } from '../navigation/AppNavigator';
 import LearningCard from '../components/LearningCard';
 import ProgressDots from '../components/ProgressDots';
@@ -20,12 +21,14 @@ import { LETTERS } from '../data/letters';
 import { NUMBERS } from '../data/numbers';
 import { COLORS } from '../data/colors';
 import { SHAPES } from '../data/shapes';
+import { SHAPE_GRAPHICS } from '../components/ShapeGraphic';
 
 type LearningNavProp = NativeStackNavigationProp<RootStackParamList, 'Learning'>;
 type LearningRouteProp = RouteProp<RootStackParamList, 'Learning'>;
 
 interface CardData {
   emoji: string;
+  shapeNode?: React.ReactNode;
   primaryText: string;
   secondaryText?: string;
   tertiaryText?: string;
@@ -42,9 +45,9 @@ function buildCards(moduleType: string, t: ReturnType<typeof useTranslation>): C
   switch (moduleType) {
     case 'letters':
       return LETTERS.map((item) => ({
-        emoji: item.emoji,
+        emoji: t.letterEmojis[item.letter] ?? item.emoji,
         primaryText: item.letter,
-        secondaryText: item.word,
+        secondaryText: t.letterWords[item.letter] ?? item.word,
       }));
     case 'numbers':
       return NUMBERS.map((item) => ({
@@ -62,8 +65,9 @@ function buildCards(moduleType: string, t: ReturnType<typeof useTranslation>): C
     case 'shapes':
       return SHAPES.map((item) => ({
         emoji: item.emoji,
+        shapeNode: SHAPE_GRAPHICS[item.name],
         primaryText: t.shapeNames[item.name] ?? item.name,
-        secondaryText: item.description,
+        secondaryText: t.shapeDescriptions?.[item.name] ?? item.description,
         tertiaryText: item.examples,
       }));
     default:
@@ -74,7 +78,7 @@ function buildCards(moduleType: string, t: ReturnType<typeof useTranslation>): C
 export default function LearningScreen() {
   const navigation = useNavigation<LearningNavProp>();
   const route = useRoute<LearningRouteProp>();
-  const { updateProgress } = useApp();
+  const { updateProgress, language } = useApp();
   const t = useTranslation();
 
   const { moduleType, profileId } = route.params;
@@ -113,11 +117,13 @@ export default function LearningScreen() {
   }, [nextButtonOpacity, nextButtonScale]);
 
   const handleTap = useCallback(() => {
+    const card = cards[currentIndex];
+    if (card) speakCard(moduleType, card.primaryText, card.secondaryText, language);
     if (!tapped) {
       setTapped(true);
       showNextButton();
     }
-  }, [tapped, showNextButton]);
+  }, [tapped, currentIndex, cards, moduleType, language, showNextButton]);
 
   const handleNext = useCallback(() => {
     if (!tapped) return;
@@ -174,6 +180,7 @@ export default function LearningScreen() {
     nextButtonScale.setValue(0.7);
   }, [cardOpacity, nextButtonOpacity, nextButtonScale]);
 
+
   const card = cards[currentIndex];
   const gradientColors = GRADIENTS[moduleType];
 
@@ -207,6 +214,7 @@ export default function LearningScreen() {
             {card && (
               <LearningCard
                 emoji={card.emoji}
+                shapeNode={card.shapeNode}
                 primaryText={card.primaryText}
                 secondaryText={card.secondaryText}
                 tertiaryText={card.tertiaryText}

@@ -2,11 +2,10 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Profile, ProgressData } from '../context/AppContext';
 import { Language } from '../i18n/translations';
 
-const PROFILES_KEY  = '@wards_world_profiles';
-const PROGRESS_KEY  = '@wards_world_progress';
-const PIN_KEY       = '@wards_world_pin';
-const LANGUAGE_KEY  = '@wards_world_language';
-const DEFAULT_PIN   = '1234';
+const PROFILES_KEY  = '@warpos_world_profiles';
+const PROGRESS_KEY  = '@warpos_world_progress';
+const PIN_KEY       = '@warpos_world_pin';
+const LANGUAGE_KEY  = '@warpos_world_language';
 
 export async function loadProfiles(): Promise<Profile[]> {
   try {
@@ -48,12 +47,11 @@ export async function saveProgress(progress: ProgressData): Promise<void> {
   }
 }
 
-export async function loadPin(): Promise<string> {
+export async function loadPin(): Promise<string | null> {
   try {
-    const raw = await AsyncStorage.getItem(PIN_KEY);
-    return raw ?? DEFAULT_PIN;
+    return await AsyncStorage.getItem(PIN_KEY);
   } catch {
-    return DEFAULT_PIN;
+    return null;
   }
 }
 

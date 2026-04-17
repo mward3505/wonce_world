@@ -5,6 +5,7 @@ import {
   StyleSheet,
   Animated,
   Dimensions,
+  View,
 } from 'react-native';
 import { useTranslation } from '../i18n/useTranslation';
 
@@ -13,6 +14,7 @@ const CARD_SIZE = Math.min(width - 80, 300);
 
 interface LearningCardProps {
   emoji: string;
+  shapeNode?: React.ReactNode;
   primaryText: string;
   secondaryText?: string;
   tertiaryText?: string;
@@ -22,6 +24,7 @@ interface LearningCardProps {
 
 export default function LearningCard({
   emoji,
+  shapeNode,
   primaryText,
   secondaryText,
   tertiaryText,
@@ -71,7 +74,11 @@ export default function LearningCard({
   return (
     <TouchableOpacity activeOpacity={0.9} onPress={onTap} style={styles.touchable}>
       <Animated.View style={[styles.card, { transform: [{ scale: scaleAnim }] }]}>
-        <Text style={styles.emoji}>{emoji}</Text>
+        {shapeNode ? (
+          <View style={styles.shapeContainer}>{shapeNode}</View>
+        ) : (
+          <Text style={styles.emoji}>{emoji}</Text>
+        )}
 
         <Animated.View style={[styles.hintContainer, { opacity: hintOpacity }]}>
           <Text style={styles.hintText}>{t.tapMe}</Text>
@@ -115,6 +122,11 @@ const styles = StyleSheet.create({
     fontSize: 80,
     textAlign: 'center',
     lineHeight: 96,
+  },
+  shapeContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 4,
   },
   hintContainer: {
     position: 'absolute',

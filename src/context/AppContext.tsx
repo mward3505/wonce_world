@@ -25,13 +25,13 @@ interface AppState {
   profiles: Profile[];
   activeProfile: Profile | null;
   progress: ProgressData;
-  parentPin: string;
+  parentPin: string | null;
   language: Language;
   loaded: boolean;
 }
 
 type AppAction =
-  | { type: 'SET_LOADED'; profiles: Profile[]; progress: ProgressData; parentPin: string; language: Language }
+  | { type: 'SET_LOADED'; profiles: Profile[]; progress: ProgressData; parentPin: string | null; language: Language }
   | { type: 'SET_ACTIVE_PROFILE'; profile: Profile | null }
   | { type: 'ADD_PROFILE'; profile: Profile }
   | { type: 'UPDATE_PROFILE'; profile: Profile }
@@ -111,7 +111,7 @@ const initialState: AppState = {
   profiles: [],
   activeProfile: null,
   progress: {},
-  parentPin: '1234',
+  parentPin: null,
   language: 'en',
   loaded: false,
 };

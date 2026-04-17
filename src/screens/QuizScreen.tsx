@@ -4,9 +4,9 @@ import {
   Text,
   TouchableOpacity,
   StyleSheet,
-  SafeAreaView,
   Animated,
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
@@ -58,8 +58,8 @@ function buildQuestions(moduleType: string, t: Translations): QuizQuestion[] {
           .slice(0, 3)
           .map((l) => l.letter);
         return {
-          mainEmoji: item.emoji,
-          hintText: item.word,
+          mainEmoji: t.letterEmojis[item.letter] ?? item.emoji,
+          hintText: t.letterWords[item.letter] ?? item.word,
           promptText: t.quizPrompts.letters,
           correctAnswer: item.letter,
           options: shuffle([item.letter, ...wrongs]),

@@ -85,6 +85,7 @@ export interface Translations {
   nameTooLong: string;
 
   // ── Parent dashboard ──────────────────────────────────────────────────────
+  parentsLabel: string;
   parentDashboard: string;
   kidsLabel: string;
   noProfiles: string;
@@ -103,6 +104,11 @@ export interface Translations {
 
   // ── PIN screen ────────────────────────────────────────────────────────────
   parentArea: string;
+  createPinTitle: string;
+  createPinSubtitle: string;
+  confirmPinTitle: string;
+  confirmPinSubtitle: string;
+  pinCreatedMsg: string;
   enterPin: string;
   tooManyTries: string;
   wrongPin: (triesLeft: number) => string;
@@ -111,6 +117,9 @@ export interface Translations {
   colorNames: Record<string, string>;
   numberWords: Record<string, string>;
   shapeNames: Record<string, string>;
+  shapeDescriptions: Record<string, string>;
+  letterWords: Record<string, string>;
+  letterEmojis: Record<string, string>;
 }
 
 // ── English ───────────────────────────────────────────────────────────────────
@@ -185,6 +194,7 @@ const en: Translations = {
   nameRequired: 'Please enter a name for this kid.',
   nameTooLong: 'Name must be 20 characters or less.',
 
+  parentsLabel: 'Parents',
   parentDashboard: '👪 Parent Dashboard',
   kidsLabel: '← Kids',
   noProfiles: 'No profiles yet!',
@@ -203,10 +213,29 @@ const en: Translations = {
     `Are you sure you want to delete ${name}'s profile? All their progress will be lost.`,
 
   parentArea: 'Parent Area',
+  createPinTitle: 'Create Your PIN',
+  createPinSubtitle: 'Choose a 4-digit PIN to protect the Parent Area',
+  confirmPinTitle: 'Confirm Your PIN',
+  confirmPinSubtitle: 'Enter the same PIN again',
+  pinCreatedMsg: '🔐 PIN created!',
   enterPin: 'Enter PIN to continue',
   tooManyTries: 'Too many tries! Come back later.',
   wrongPin: (n) => `Wrong PIN! ${n} ${n === 1 ? 'try' : 'tries'} left.`,
 
+  letterWords: {
+    A: 'Apple', B: 'Ball', C: 'Cat', D: 'Dog', E: 'Elephant',
+    F: 'Fish', G: 'Grapes', H: 'House', I: 'Ice Cream', J: 'Jellyfish',
+    K: 'Kite', L: 'Lion', M: 'Moon', N: 'Nest', O: 'Orange',
+    P: 'Penguin', Q: 'Queen', R: 'Rainbow', S: 'Sun', T: 'Tiger',
+    U: 'Umbrella', V: 'Violin', W: 'Whale', X: 'Xylophone', Y: 'Yak', Z: 'Zebra',
+  },
+  letterEmojis: {
+    A: '🍎', B: '⚽', C: '🐱', D: '🐶', E: '🐘',
+    F: '🐟', G: '🍇', H: '🏠', I: '🍦', J: '🪼',
+    K: '🪁', L: '🦁', M: '🌙', N: '🪺', O: '🍊',
+    P: '🐧', Q: '👸', R: '🌈', S: '☀️', T: '🐯',
+    U: '☂️', V: '🎻', W: '🐋', X: '🎵', Y: '🐃', Z: '🦓',
+  },
   colorNames: {
     Red: 'Red',
     Blue: 'Blue',
@@ -214,6 +243,8 @@ const en: Translations = {
     Green: 'Green',
     Orange: 'Orange',
     Purple: 'Purple',
+    Pink: 'Pink',
+    White: 'White',
   },
   numberWords: {
     One: 'One',
@@ -234,6 +265,14 @@ const en: Translations = {
     Rectangle: 'Rectangle',
     Star: 'Star',
     Heart: 'Heart',
+  },
+  shapeDescriptions: {
+    Circle: 'Round like the sun!',
+    Square: 'Four equal sides!',
+    Triangle: 'Three pointy sides!',
+    Rectangle: 'Like a door or book!',
+    Star: 'Twinkle twinkle!',
+    Heart: 'Full of love!',
   },
 };
 
@@ -309,6 +348,7 @@ const es: Translations = {
   nameRequired: 'Por favor escribe un nombre para este niño.',
   nameTooLong: 'El nombre debe tener 20 caracteres o menos.',
 
+  parentsLabel: 'Padres',
   parentDashboard: '👪 Panel de Padres',
   kidsLabel: '← Niños',
   noProfiles: '¡Sin perfiles aún!',
@@ -327,11 +367,30 @@ const es: Translations = {
     `¿Seguro que quieres eliminar el perfil de ${name}? Se perderá todo su progreso.`,
 
   parentArea: 'Área de Padres',
+  createPinTitle: 'Crea tu PIN',
+  createPinSubtitle: 'Elige un PIN de 4 dígitos para proteger el Área de Padres',
+  confirmPinTitle: 'Confirma tu PIN',
+  confirmPinSubtitle: 'Ingresa el mismo PIN de nuevo',
+  pinCreatedMsg: '🔐 ¡PIN creado!',
   enterPin: 'Escribe el PIN para continuar',
   tooManyTries: '¡Demasiados intentos! Vuelve más tarde.',
   wrongPin: (n) =>
     `¡PIN incorrecto! ${n === 1 ? 'Queda 1 intento' : `Quedan ${n} intentos`}.`,
 
+  letterWords: {
+    A: 'Árbol', B: 'Ballena', C: 'Casa', D: 'Delfín', E: 'Elefante',
+    F: 'Fresa', G: 'Gato', H: 'Helado', I: 'Iguana', J: 'Jirafa',
+    K: 'Koala', L: 'Luna', M: 'Mariposa', N: 'Naranja', O: 'Oso',
+    P: 'Perro', Q: 'Queso', R: 'Ratón', S: 'Sol', T: 'Tortuga',
+    U: 'Uva', V: 'Vaca', W: 'Wafle', X: 'Xilófono', Y: 'Yogur', Z: 'Zorro',
+  },
+  letterEmojis: {
+    A: '🌳', B: '🐋', C: '🏠', D: '🐬', E: '🐘',
+    F: '🍓', G: '🐱', H: '🍦', I: '🦎', J: '🦒',
+    K: '🐨', L: '🌙', M: '🦋', N: '🍊', O: '🐻',
+    P: '🐶', Q: '🧀', R: '🐭', S: '☀️', T: '🐢',
+    U: '🍇', V: '🐄', W: '🧇', X: '🎵', Y: '🥛', Z: '🦊',
+  },
   colorNames: {
     Red: 'Rojo',
     Blue: 'Azul',
@@ -339,6 +398,8 @@ const es: Translations = {
     Green: 'Verde',
     Orange: 'Naranja',
     Purple: 'Morado',
+    Pink: 'Rosa',
+    White: 'Blanco',
   },
   numberWords: {
     One: 'Uno',
@@ -359,6 +420,14 @@ const es: Translations = {
     Rectangle: 'Rectángulo',
     Star: 'Estrella',
     Heart: 'Corazón',
+  },
+  shapeDescriptions: {
+    Circle: '¡Redondo como el sol!',
+    Square: '¡Cuatro lados iguales!',
+    Triangle: '¡Tres lados puntiagudos!',
+    Rectangle: '¡Como una puerta o un libro!',
+    Star: '¡Brilla que brilla!',
+    Heart: '¡Lleno de amor!',
   },
 };
 

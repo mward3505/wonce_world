@@ -1,17 +1,22 @@
 {
-  "expo": {
-    "name": "Warpos World",
-    "slug": "wards-world",
-    "version": "1.0.0",
-    "orientation": "portrait",
-    "icon": "./assets/icon.png",
-    "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#667EEA"
-    },
-    "ios": { "supportsTablet": true },
-    "android": { "adaptiveIcon": { "foregroundImage": "./assets/adaptive-icon.png", "backgroundColor": "#667EEA" } },
-    "web": { "favicon": "./assets/favicon.png" }
-  }
+    "expo": {
+        "name": "Warpos World",
+        "slug": "warpos-world",
+        "version": "1.0.0",
+        "orientation": "portrait",
+        "icon": "./assets/icon.png",
+        "splash": {
+            "image": "./assets/splash.png",
+            "resizeMode": "contain",
+            "backgroundColor": "#667EEA"
+        },
+        "ios": { "supportsTablet": true },
+        "android": {
+            "adaptiveIcon": {
+                "foregroundImage": "./assets/adaptive-icon.png",
+                "backgroundColor": "#667EEA"
+            }
+        },
+        "web": { "favicon": "./assets/favicon.png" }
+    }
 }
