@@ -11,28 +11,27 @@
       "backgroundColor": "#667EEA"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.mward3505.wonceworld"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#667EEA"
-      }
+      },
+      "package": "com.mward3505.wonceworld"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    },
-    "extra": {
-      "eas": {
-        "projectId": "86b04f0d-a0ee-425b-ba5e-ab39e51805c4"
-      }
     },
     "owner": "mward3505",
     "runtimeVersion": {
       "policy": "appVersion"
     },
-    "updates": {
-      "url": "https://u.expo.dev/86b04f0d-a0ee-425b-ba5e-ab39e51805c4"
+    "extra": {
+      "eas": {
+        "projectId": "3f9f86e6-25e5-4dd1-8da6-7f54178efb06"
+      }
     }
   }
 }
