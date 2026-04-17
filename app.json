@@ -1,22 +1,38 @@
 {
-    "expo": {
-        "name": "Warpos World",
-        "slug": "warpos-world",
-        "version": "1.0.0",
-        "orientation": "portrait",
-        "icon": "./assets/icon.png",
-        "splash": {
-            "image": "./assets/splash.png",
-            "resizeMode": "contain",
-            "backgroundColor": "#667EEA"
-        },
-        "ios": { "supportsTablet": true },
-        "android": {
-            "adaptiveIcon": {
-                "foregroundImage": "./assets/adaptive-icon.png",
-                "backgroundColor": "#667EEA"
-            }
-        },
-        "web": { "favicon": "./assets/favicon.png" }
+  "expo": {
+    "name": "Wonce World",
+    "slug": "wonce-world",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#667EEA"
+    },
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#667EEA"
+      }
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "86b04f0d-a0ee-425b-ba5e-ab39e51805c4"
+      }
+    },
+    "owner": "mward3505",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/86b04f0d-a0ee-425b-ba5e-ab39e51805c4"
     }
+  }
 }

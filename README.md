@@ -1,4 +1,4 @@
-# Warpos World 🌍
+# Wonce World 🌍
 
 A fun, bilingual (English/Spanish) kids learning app built with React Native & Expo.
 
@@ -36,17 +36,6 @@ npx expo start
 ```
 
 Scan the QR code in the terminal with Expo Go.
-
----
-
-## Publish a Shareable Demo
-
-```bash
-npm install -g eas-cli
-eas login
-eas init
-eas update --channel preview --message "Demo"
-```
 
 ---
 

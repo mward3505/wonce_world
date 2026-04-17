@@ -2,10 +2,10 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Profile, ProgressData } from '../context/AppContext';
 import { Language } from '../i18n/translations';
 
-const PROFILES_KEY  = '@warpos_world_profiles';
-const PROGRESS_KEY  = '@warpos_world_progress';
-const PIN_KEY       = '@warpos_world_pin';
-const LANGUAGE_KEY  = '@warpos_world_language';
+const PROFILES_KEY  = '@wonce_world_profiles';
+const PROGRESS_KEY  = '@wonce_world_progress';
+const PIN_KEY       = '@wonce_world_pin';
+const LANGUAGE_KEY  = '@wonce_world_language';
 
 export async function loadProfiles(): Promise<Profile[]> {
   try {

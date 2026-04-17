@@ -220,7 +220,7 @@ export default function HomeScreen() {
           <Animated.Text style={[styles.mascot, { transform: [{ translateY: mascotY }] }]}>
             🦉
           </Animated.Text>
-          <Text style={styles.titleText}>Warpos World</Text>
+          <Text style={styles.titleText}>Wonce World</Text>
           <View style={styles.subtitleBubble}>
             <Text style={styles.subtitleText}>{t.whoLearning}</Text>
           </View>
